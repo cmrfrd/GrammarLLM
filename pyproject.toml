@@ -1,0 +1,131 @@
+[tool.pdm.build]
+includes = ["grammar_llm"]
+
+[project]
+name = "grammar_llm"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "cmrfrd", email = "alex@taoa.io"},
+]
+dependencies = [
+    "nest-asyncio>=1.5.6",
+    "pydantic>=1.10.7",
+    "fastapi>=0.95.1",
+    "openai>=0.27.8",
+    "tiktoken>=0.3.3",
+    "backoff>=2.2.1",
+    "llama-cpp-python>=0.1.73",
+    "huggingface-hub>=0.16.4",
+    "lark>=1.1.7",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+[project.optional-dependencies]
+dev = [
+    "black[jupyter]>=23.3.0",
+    "ipykernel>=6.22.0",
+    "mypy>=1.2.0",
+    "pydocstyle>=6.3.0",
+    "pyupgrade>=3.3.1",
+    "pylint>=2.17.3",
+    "pylama[all]>=8.4.1",
+    "pycodestyle>=2.10.0",
+    "pyflakes>=3.0.1",
+]
+test = [
+    "pytest>=7.3.1",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "pytest-env>=0.8.1",
+    "pytest-mock>=3.10.0",
+    "pytest-random-order>=1.1.0",
+    "pytest-socket>=0.6.0",
+]
+types = [
+    "mypy-boto3-s3>=1.26.116",
+    "types-boto3>=1.0.2",
+]
+
+[[tool.mypy.overrides]]
+module = [
+  'astroid.*',
+  'clip.*',
+  'cv2.*',
+  'dagster.*',
+  'dagster_celery.*',
+  'dask.*',
+  'dill.*',
+  'distributed.*',
+  'dotenv.*',
+  'fastapi.*',
+  'fsspec.*',
+  'h5py.*',
+  'joblib.*',
+  'keras-retinanet.*',
+  'mediapipe.*',
+  'moto.*',
+  'open_clip.*',
+  'pandas.*',
+  'pydantic.*',
+  'pylint.*',
+  'pyonepassword.*',
+  's3fs.*',
+  's3path.*',
+  'scipy.*',
+  'semver.*',
+  'skimage.*',
+  'sklearn.*',
+  'tensorflow.*',
+  'torch.*',
+  'torchvision.*',
+  'xgboost.*'
+]
+ignore_missing_imports = true
+exclude = [
+  "test/**/*_test.py",
+  "test/**/test_*.py"
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=cvml --cov-report=term-missing --random-order"
+asyncio_mode = "auto"
+env = [
+  "ENV=dev"
+]
+minversion = "6.0"
+
+[tool.coverage.run]
+omit = [
+  "**/_remote_module_non_scriptable.py",
+  "test/**/*.py",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.mypy]
+disallow_any_unimported = false
+disallow_any_expr = false
+disallow_any_decorated = false
+disallow_any_generics = false
+disallow_any_explicit = false
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_redundant_casts = true
+strict_equality = true
+warn_unused_configs = true
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
