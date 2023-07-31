@@ -1,0 +1,64 @@
+{
+	"name": "GrammarLLM",
+	"dockerComposeFile": [
+		"../.docker/docker-compose-dev.yml"
+	],
+	"remoteUser": "user",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"[python]": {
+					"editor.tabSize": 4,
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true,
+						"source.fixAll": true
+					}
+				},
+				"editor.formatOnSave": true,
+				"git.ignoreMissingGitWarning": true,
+				"python.defaultInterpreterPath": "/opt/grammar_llm/.venv/bin/python",
+				"python.formatting.blackPath": "/opt/grammar_llm/.venv/bin/black",
+				"python.formatting.provider": "black",
+				"python.isort.args": [
+					"--profile",
+					"black"
+				],
+				"python.languageServer": "Default",
+				"python.linting.enabled": true,
+				"python.linting.mypyEnabled": true,
+				"python.linting.mypyPath": "/opt/grammar_llm/.venv/bin/mypy",
+				"python.linting.flake8Enabled": false,
+				"python.linting.lintOnSave": true,
+				"python.linting.pylintEnabled": true,
+				"python.linting.pylintPath": "/opt/grammar_llm/.venv/bin/pylint",
+				"python.linting.pylintArgs": [
+					"--verbose"
+				],
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "zsh"
+					}
+				},
+				"workbench.iconTheme": "vscode-icons"
+			},
+			"extensions": [
+				"ms-python.isort",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter-keymap",
+				"ms-toolsai.jupyter-renderers",
+				"ms-toolsai.jupyter",
+				"timonwong.shellcheck",
+				"vscode-icons-team.vscode-icons",
+				"wayou.vscode-todo-highlight",
+				"github.copilot"
+			]
+		}
+	},
+	"service": "dev",
+	"userEnvProbe": "loginInteractiveShell",
+	"workspaceFolder": "/workspace",
+	"initializeCommand": "sh .devcontainer/initialize.sh",
+	"features": {}
+}
