@@ -12,7 +12,7 @@ Here are some examples of valid emails:
 - sarah.smith_90@yahoo.com
 - gpt3user1234@example.com
 
-Generate an email for Elon Musk for his domain x.com:
+Generate an email for Elon Musk for the domain x.com:
 - """
 
 grammar = """
