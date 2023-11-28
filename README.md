@@ -51,3 +51,11 @@ for t in generate_from_cfg(llm, prompt, parser, max_tokens=5):
 ```
 xtest123@xmailserver12.com
 ```
+
+
+
+docker pull nvidia/cuda:11.7.1-devel-ubuntu22.04
+
+NVIDIA_VISIBLE_DEVICES=all CUDA_VISIBLE_DEVICES=all /usr/bin/python3 simple_gpu.py
+
+CUDA_DOCKER_ARCH=all LLAMA_CUBLAS=1 CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python lark rstr pydantic
